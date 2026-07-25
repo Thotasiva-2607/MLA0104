@@ -25,7 +25,35 @@ END DFS_Visit
 
 ---
 
-## 2. Minimax Algorithm
+## 2. Breadth First Search (BFS)
+
+```text
+BFS(Graph, StartNode)
+
+    CREATE empty queue Q
+    CREATE empty set Visited
+
+    ADD StartNode to Visited
+    ENQUEUE StartNode into Q
+
+    WHILE Q is not empty DO
+        CurrentNode ← DEQUEUE Q
+        VISIT CurrentNode
+
+        FOR each Neighbor of CurrentNode in Graph DO
+            IF Neighbor not in Visited THEN
+                ADD Neighbor to Visited
+                ENQUEUE Neighbor into Q
+            END IF
+        END FOR
+    END WHILE
+
+END BFS
+```
+
+---
+
+## 3. Minimax Algorithm
 
 ```text
 Minimax(Node, Depth, IsMax)
@@ -39,11 +67,46 @@ Minimax(Node, Depth, IsMax)
     ELSE
         RETURN min(Minimax(children))
     END IF
+
+END Minimax
 ```
 
 ---
 
-## 3. Uniform Cost Search (UCS)
+## 4. Alpha-Beta Pruning
+
+```text
+AlphaBeta(Node, Depth, α, β, IsMax)
+
+    IF Depth = 0 THEN
+        RETURN value
+    END IF
+
+    IF IsMax THEN
+        FOR each Child DO
+            α ← max(α, AlphaBeta(Child, Depth-1, α, β, FALSE))
+            IF β ≤ α THEN
+                BREAK
+            END IF
+        END FOR
+        RETURN α
+
+    ELSE
+        FOR each Child DO
+            β ← min(β, AlphaBeta(Child, Depth-1, α, β, TRUE))
+            IF β ≤ α THEN
+                BREAK
+            END IF
+        END FOR
+        RETURN β
+    END IF
+
+END AlphaBeta
+```
+
+---
+
+## 5. Uniform Cost Search (UCS)
 
 ```text
 UniformCostSearch(Graph, Start, Goal)
@@ -54,10 +117,11 @@ UniformCostSearch(Graph, Start, Goal)
     INSERT (0, Start) into PQ
 
     WHILE PQ not empty DO
-        (Cost, Node) ← REMOVE node with minimum cost from PQ
+
+        (Cost, Node) ← REMOVE node with minimum cost
 
         IF Node = Goal THEN
-            PRINT "Goal Reached with cost", Cost
+            PRINT "Goal Reached with Cost", Cost
             EXIT
         END IF
 
@@ -68,70 +132,55 @@ UniformCostSearch(Graph, Start, Goal)
                 INSERT (Cost + EdgeCost, Neighbor) into PQ
             END FOR
         END IF
+
     END WHILE
+
+END UniformCostSearch
 ```
 
 ---
 
-## 4. Greedy Best First Search (GBFS)
+## 6. Greedy Best First Search (GBFS)
 
 ```text
-GreedySearch(Graph, Start, Goal)
+GreedyBestFirstSearch(Graph, Start, Goal)
 
     CREATE priority queue PQ
-    INSERT Start using heuristic
+
+    INSERT Start using heuristic value
 
     WHILE PQ not empty DO
-        Node ← REMOVE lowest heuristic node
+
+        Node ← REMOVE node with lowest heuristic
+
         PRINT Node
 
         IF Node = Goal THEN
             EXIT
         END IF
 
-        INSERT neighbors into PQ
+        FOR each Neighbor of Node DO
+            INSERT Neighbor into PQ
+        END FOR
+
     END WHILE
+
+END GreedyBestFirstSearch
 ```
 
 ---
 
-## 5. Alpha-Beta Pruning
-
-```text
-AlphaBeta(Node, Depth, α, β, IsMax)
-
-    IF Depth = 0 THEN
-        RETURN value
-    END IF
-
-    IF IsMax THEN
-        FOR each child DO
-            α ← max(α, AlphaBeta(child))
-            IF β ≤ α THEN
-                BREAK
-            END IF
-        END FOR
-    ELSE
-        FOR each child DO
-            β ← min(β, AlphaBeta(child))
-            IF β ≤ α THEN
-                BREAK
-            END IF
-        END FOR
-    END IF
-```
-
----
-
-## 6. A* Search
+## 7. A* Search
 
 ```text
 AStar(Graph, Start, Goal)
 
     CREATE priority queue PQ
+
     INSERT (f = 0, Start)
 
     WHILE PQ not empty DO
+
         Node ← REMOVE node with lowest f
 
         IF Node = Goal THEN
@@ -141,15 +190,20 @@ AStar(Graph, Start, Goal)
 
         FOR each Neighbor DO
             g ← path cost
-            f ← g + heuristic
+            h ← heuristic
+            f ← g + h
+
             INSERT Neighbor into PQ
         END FOR
+
     END WHILE
+
+END AStar
 ```
 
 ---
 
-## 7. Water Jug Problem
+## 8. Water Jug Problem
 
 ```text
 WaterJug(Jug1, Jug2, Target)
@@ -161,6 +215,7 @@ WaterJug(Jug1, Jug2, Target)
     ADD (0,0) to Visited
 
     WHILE Q not empty DO
+
         (x,y) ← DEQUEUE Q
 
         IF x = Target OR y = Target THEN
@@ -169,8 +224,12 @@ WaterJug(Jug1, Jug2, Target)
         END IF
 
         GENERATE possible states
+
         ADD unvisited states to Q
+
     END WHILE
 
     PRINT "Target Not Possible"
+
+END WaterJug
 ```
