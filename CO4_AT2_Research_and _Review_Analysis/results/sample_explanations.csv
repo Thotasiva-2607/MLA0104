@@ -1,0 +1,6 @@
+sepal_length_cm,sepal_width_cm,petal_length_cm,petal_width_cm,actual,ebl_prediction,EBL explanation
+7.3,2.9,6.3,1.8,virginica,virginica,Rule 3: petal_length_cm > 2.45 AND petal_width_cm > 1.75 -> virginica
+6.1,2.9,4.7,1.4,versicolor,versicolor,Rule 2: petal_length_cm > 2.45 AND petal_width_cm <= 1.75 -> versicolor
+6.3,2.8,5.1,1.5,virginica,versicolor,Rule 2: petal_length_cm > 2.45 AND petal_width_cm <= 1.75 -> versicolor
+6.3,3.3,4.7,1.6,versicolor,versicolor,Rule 2: petal_length_cm > 2.45 AND petal_width_cm <= 1.75 -> versicolor
+6.1,3.0,4.9,1.8,virginica,virginica,Rule 3: petal_length_cm > 2.45 AND petal_width_cm > 1.75 -> virginica

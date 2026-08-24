@@ -1,0 +1,19 @@
+|--- petal_length_cm <= 2.45
+|   |--- class: 0
+|--- petal_length_cm >  2.45
+|   |--- petal_width_cm <= 1.55
+|   |   |--- petal_length_cm <= 4.95
+|   |   |   |--- class: 1
+|   |   |--- petal_length_cm >  4.95
+|   |   |   |--- class: 2
+|   |--- petal_width_cm >  1.55
+|   |   |--- petal_width_cm <= 1.70
+|   |   |   |--- sepal_width_cm <= 2.85
+|   |   |   |   |--- class: 1
+|   |   |   |--- sepal_width_cm >  2.85
+|   |   |   |   |--- class: 2
+|   |   |--- petal_width_cm >  1.70
+|   |   |   |--- petal_length_cm <= 4.85
+|   |   |   |   |--- class: 1
+|   |   |   |--- petal_length_cm >  4.85
+|   |   |   |   |--- class: 2
