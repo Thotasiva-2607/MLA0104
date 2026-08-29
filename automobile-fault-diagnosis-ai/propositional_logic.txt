@@ -1,0 +1,122 @@
+AUTOMOBILE FAULT DIAGNOSIS
+PROPOSITIONAL LOGIC MODEL
+
+Propositional Logic represents automobile conditions
+using propositions that are either TRUE or FALSE.
+
+--------------------------------------------------
+PROPOSITIONS
+--------------------------------------------------
+
+O = Engine is overheating.
+
+S = Vehicle has starting failure.
+
+N = Abnormal engine noise is observed.
+
+M = Vehicle has low mileage.
+
+W = Warning indicator is ON.
+
+C = Cooling-system fault is suspected.
+
+B = Battery fault is suspected.
+
+E = Engine/mechanical fault is suspected.
+
+F = Fuel-system fault is suspected.
+
+T = Sensor/monitored-system fault is suspected.
+
+--------------------------------------------------
+BASIC LOGICAL RULES
+--------------------------------------------------
+
+Rule 1:
+O -> C
+
+Meaning:
+If the engine is overheating, then a cooling-system
+fault is suspected.
+
+Rule 2:
+S -> B
+
+Meaning:
+If the vehicle has starting failure, then a battery
+fault is suspected.
+
+Rule 3:
+N -> E
+
+Meaning:
+If abnormal engine noise is observed, then an
+engine/mechanical fault is suspected.
+
+Rule 4:
+M -> F
+
+Meaning:
+If the vehicle has low mileage, then a fuel-system
+fault is suspected.
+
+Rule 5:
+W -> T
+
+Meaning:
+If the warning indicator is ON, then a sensor/system
+fault is suspected.
+
+--------------------------------------------------
+COMBINED CONDITIONS
+--------------------------------------------------
+
+Rule 6:
+(O AND W) -> C
+
+Meaning:
+If the engine is overheating AND the warning indicator
+is ON, then a cooling-system fault is highly suspected.
+
+Rule 7:
+(S AND W) -> B
+
+Meaning:
+If starting failure AND warning indicator are present,
+then a battery/electrical fault is suspected.
+
+--------------------------------------------------
+EXAMPLE INFERENCE
+--------------------------------------------------
+
+Given:
+
+O = TRUE
+W = TRUE
+
+Rule:
+
+(O AND W) -> C
+
+Since both O and W are TRUE:
+
+C = TRUE
+
+Conclusion:
+
+Cooling-system fault is suspected.
+
+--------------------------------------------------
+LOGICAL CONNECTIVES
+--------------------------------------------------
+
+AND  = ^
+OR   = v
+NOT  = ~
+IMPLIES = ->
+
+Example:
+
+O ^ W -> C
+
+This represents a combined diagnostic condition.

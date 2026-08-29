@@ -1,0 +1,191 @@
+AUTOMOBILE FAULT DIAGNOSIS
+FIRST-ORDER LOGIC MODEL
+
+First-Order Logic (FOL) represents entities,
+properties, relationships, variables and rules.
+
+--------------------------------------------------
+ENTITY
+--------------------------------------------------
+
+car1 = A particular automobile.
+
+--------------------------------------------------
+PREDICATES
+--------------------------------------------------
+
+Vehicle(x)
+    x is a vehicle.
+
+Overheating(x)
+    x is overheating.
+
+StartingFailure(x)
+    x has starting failure.
+
+AbnormalNoise(x)
+    x has abnormal engine noise.
+
+LowMileage(x)
+    x has low mileage.
+
+WarningOn(x)
+    warning indicator of x is ON.
+
+CoolingFault(x)
+    x has a cooling-system fault.
+
+BatteryFault(x)
+    x has a battery fault.
+
+EngineFault(x)
+    x has an engine/mechanical fault.
+
+FuelFault(x)
+    x has a fuel-system fault.
+
+SensorFault(x)
+    x has a sensor/monitored-system fault.
+
+--------------------------------------------------
+FACTS
+--------------------------------------------------
+
+Vehicle(car1)
+
+Overheating(car1)
+
+StartingFailure(car1)
+
+AbnormalNoise(car1)
+
+LowMileage(car1)
+
+WarningOn(car1)
+
+--------------------------------------------------
+FOL RULES
+--------------------------------------------------
+
+Rule 1:
+
+For every vehicle x:
+
+Overheating(x) -> CoolingFault(x)
+
+Formal representation:
+
+∀x (Overheating(x) -> CoolingFault(x))
+
+
+Rule 2:
+
+For every vehicle x:
+
+StartingFailure(x) -> BatteryFault(x)
+
+Formal representation:
+
+∀x (StartingFailure(x) -> BatteryFault(x))
+
+
+Rule 3:
+
+For every vehicle x:
+
+AbnormalNoise(x) -> EngineFault(x)
+
+Formal representation:
+
+∀x (AbnormalNoise(x) -> EngineFault(x))
+
+
+Rule 4:
+
+For every vehicle x:
+
+LowMileage(x) -> FuelFault(x)
+
+Formal representation:
+
+∀x (LowMileage(x) -> FuelFault(x))
+
+
+Rule 5:
+
+For every vehicle x:
+
+WarningOn(x) -> SensorFault(x)
+
+Formal representation:
+
+∀x (WarningOn(x) -> SensorFault(x))
+
+--------------------------------------------------
+COMBINED FOL RULES
+--------------------------------------------------
+
+Rule 6:
+
+∀x ((Overheating(x) AND WarningOn(x))
+     -> CoolingFault(x))
+
+Meaning:
+
+For every vehicle, if it is overheating and the
+warning indicator is ON, a cooling-system fault
+is suspected.
+
+Rule 7:
+
+∀x ((StartingFailure(x) AND WarningOn(x))
+     -> BatteryFault(x))
+
+Meaning:
+
+For every vehicle, if it has starting failure and
+the warning indicator is ON, a battery/electrical
+fault is suspected.
+
+--------------------------------------------------
+EXISTENTIAL QUANTIFIER
+--------------------------------------------------
+
+∃x (Vehicle(x) AND Overheating(x))
+
+Meaning:
+
+There exists at least one vehicle that is overheating.
+
+Another example:
+
+∃x (Vehicle(x) AND BatteryFault(x))
+
+Meaning:
+
+There exists at least one vehicle with a suspected
+battery fault.
+
+--------------------------------------------------
+EXAMPLE INFERENCE
+--------------------------------------------------
+
+Given:
+
+Overheating(car1)
+
+Rule:
+
+∀x (Overheating(x) -> CoolingFault(x))
+
+Substitute car1 for x:
+
+Overheating(car1) -> CoolingFault(car1)
+
+Therefore:
+
+CoolingFault(car1)
+
+Conclusion:
+
+A cooling-system fault is suspected for car1.
