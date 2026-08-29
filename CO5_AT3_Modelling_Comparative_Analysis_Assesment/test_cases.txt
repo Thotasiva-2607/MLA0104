@@ -1,0 +1,65 @@
+CYBERSECURITY THREAT DETECTION EXPERT SYSTEM - TEST CASES
+
+Test Case 1 - Brute Force + Suspicious Login
+Facts:
+failed_logins(alice, 8)
+unusual_location(alice)
+off_hours_login(alice)
+Expected:
+brute_force_attempt(alice)
+suspicious_login(alice)
+high_risk_account(alice)
+
+Test Case 2 - Privilege Escalation + File Access
+Facts:
+privilege_escalation(bob)
+suspicious_file_access(bob)
+Expected:
+privilege_escalation_detected(bob)
+suspicious_file_activity(bob)
+account_compromise(bob)
+
+Test Case 3 - Benign / Insufficient Evidence
+Facts:
+failed_logins(charlie, 2)
+unusual_location(charlie)
+Expected:
+No brute-force conclusion because failures < 5.
+No suspicious-login conclusion because off-hours evidence is absent.
+
+Test Case 4 - Network Anomaly + Compromise Indicators
+Facts:
+abnormal_network_traffic(diana)
+privilege_escalation(diana)
+suspicious_file_access(diana)
+Expected:
+network_anomaly(diana)
+privilege_escalation_detected(diana)
+suspicious_file_activity(diana)
+account_compromise(diana)
+critical_incident(diana)
+
+Test Case 5 - Multi-signal Critical Incident
+Facts:
+failed_logins(eric, 7)
+unusual_location(eric)
+off_hours_login(eric)
+privilege_escalation(eric)
+suspicious_file_access(eric)
+abnormal_network_traffic(eric)
+Expected:
+brute-force, suspicious-login, high-risk account,
+privilege escalation, suspicious file activity,
+account compromise, network anomaly and critical incident.
+
+SWI-PROLOG COMMANDS
+1. Open SWI-Prolog.
+2. File -> Consult -> select cybersecurity_expert.pl
+3. Run:
+   ?- run_demo.
+4. Backward reasoning examples:
+   ?- threat(brute_force_attempt, alice).
+   ?- threat(account_compromise, bob).
+   ?- threat(critical_incident, diana).
+5. Forward reasoning example:
+   ?- test_case(5, Facts), derive_all(Facts, Closure).
