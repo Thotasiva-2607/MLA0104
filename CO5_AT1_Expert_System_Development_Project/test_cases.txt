@@ -1,0 +1,72 @@
+MEDICAL DIAGNOSIS EXPERT SYSTEM - TEST CASES
+
+TEST CASE 1 - FLU
+Facts:
+symptom(fever)
+symptom(cough)
+symptom(body_ache)
+symptom(fatigue)
+
+Expected: flu
+Query:
+?- diagnose([symptom(fever), symptom(cough), symptom(body_ache), symptom(fatigue)], D).
+Expected output:
+D = [flu].
+
+Backward:
+?- backward_chain(flu, [symptom(fever), symptom(cough), symptom(body_ache), symptom(fatigue)], Trace).
+Expected: Trace shows flu goal and successful condition matching.
+
+TEST CASE 2 - COMMON COLD
+Facts:
+symptom(sneezing)
+symptom(runny_nose)
+symptom(sore_throat)
+Expected: common_cold
+
+TEST CASE 3 - MIGRAINE
+Facts:
+symptom(severe_headache)
+symptom(nausea)
+symptom(light_sensitivity)
+Expected: migraine
+
+TEST CASE 4 - FOOD POISONING
+Facts:
+symptom(vomiting)
+symptom(diarrhea)
+symptom(abdominal_pain)
+Expected: food_poisoning
+
+TEST CASE 5 - PNEUMONIA
+Facts:
+symptom(fever)
+symptom(cough)
+symptom(shortness_of_breath)
+symptom(chest_pain)
+Expected: pneumonia
+
+DEMONSTRATION QUERIES
+
+1. Load:
+?- consult('medical_expert.pl').
+
+2. Run all tests:
+?- run_all_tests.
+
+3. Forward chaining:
+?- forward_chain(
+     [symptom(fever), symptom(cough), symptom(body_ache), symptom(fatigue)],
+     Conclusions).
+
+4. Backward chaining:
+?- backward_chain(
+     flu,
+     [symptom(fever), symptom(cough), symptom(body_ache), symptom(fatigue)],
+     Trace).
+
+5. Recommendations:
+?- recommendations([flu], Actions).
+
+RESULT EVALUATION
+All five predefined scenarios are designed to satisfy one diagnosis rule exactly. The expected result is PASS when the diagnosed list matches the expected diagnosis.
